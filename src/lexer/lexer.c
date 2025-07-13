@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include "lexer.h"
+#include "../ds/linkList.h"
 
 // Lexer go to the next char
 void lexer_next(Lexer* lexer)
@@ -64,22 +65,19 @@ Token lexer_get_token(Lexer* lexer)
     }
 }
 
-void lex_expression(const char* input)
+LinkList* lex_expression(const char* input)
 {
     Lexer lexer = {input, 0, input[0]};
+    LinkList* head = init_link_list();
 
     Token tok;
     do
     {
         tok = lexer_get_token(&lexer);
-        printf("Token type: %d", tok.tokenType);
-        if(tok.tokenType == TOKEN_NUMBER)
-        {
-            printf(", value: %lf", tok.value);
-        }
-        printf("\n");
-
+        link_list_append(head, tok);
     } while (tok.tokenType != TOKEN_EOF && tok.tokenType != TOKEN_INVALID);
+
+    return head;
     
 }
 
