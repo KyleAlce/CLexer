@@ -36,7 +36,7 @@ double lexer_parse_number(Lexer* lexer)
     return atof(buffer);
 }
 // Get the next Token
-Token lexer_get_next_token(Lexer* lexer)
+Token lexer_get_token(Lexer* lexer)
 {
     lexer_skip_whitespace(lexer);
 
@@ -51,6 +51,7 @@ Token lexer_get_next_token(Lexer* lexer)
     }
 
     char c = lexer->current_char;
+    lexer_next(lexer);
     switch (c)
     {
     case '+': return (Token){TOKEN_PLUS, 0};
@@ -70,14 +71,13 @@ void lex_expression(const char* input)
     Token tok;
     do
     {
-        tok = lexer_get_next_token(&lexer);
+        tok = lexer_get_token(&lexer);
         printf("Token type: %d", tok.tokenType);
         if(tok.tokenType == TOKEN_NUMBER)
         {
             printf(", value: %lf", tok.value);
         }
         printf("\n");
-        lexer_next(&lexer);
 
     } while (tok.tokenType != TOKEN_EOF && tok.tokenType != TOKEN_INVALID);
     

@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
-#include "lexer.h"
+#include "src/lexer/lexer.h"
 
 int main()
 {
