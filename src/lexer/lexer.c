@@ -68,7 +68,7 @@ Token lexer_get_token(Lexer* lexer)
 LinkList* lex_expression(const char* input)
 {
     Lexer lexer = {input, 0, input[0]};
-    LinkList* head = init_link_list();
+    LinkList* head = link_list_init();
 
     Token tok;
     do

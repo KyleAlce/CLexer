@@ -4,10 +4,11 @@
 
 
 
-LinkList* init_link_list()
+LinkList* link_list_init()
 {
     LinkList* head = malloc(sizeof(LinkList));
     head->next = NULL;
+    return head;
 }
 
 void link_list_append(LinkList* list, Token tok)
