@@ -20,7 +20,7 @@ typedef struct
 {
     TokenType tokenType;
     double value;
-    double bondingPower[2];
+    double bindingPower[2];
 } Token;
 
 #endif

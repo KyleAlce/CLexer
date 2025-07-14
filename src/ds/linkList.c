@@ -40,7 +40,7 @@ Token link_list_pop(LinkList* list)
     }
 
     Token to_return = cur->value;
-
+    free(cur->next);
     cur->next = NULL;
 
     return to_return;
@@ -67,4 +67,29 @@ Token link_list_get(LinkList *list, int ind)
 
     return cur->value ;
     
+}
+
+//get the first element
+Token peek(LinkList *list)
+{
+    //pass the heap and get the first element
+    return list->next->value;
+}
+
+//pop the first element
+Token next(LinkList *list)
+{
+    //If list is empty
+    if(list->next == NULL)
+    {
+        return (Token){TOKEN_INVALID, 0, {0,0}};
+    }
+
+    Token to_return = list->next->value;
+
+    LinkList* next_value = list->next->next;
+    free(list->next);
+    list->next = next_value;
+
+    return to_return;
 }
