@@ -36,6 +36,7 @@ double lexer_parse_number(Lexer* lexer)
     buffer[lenght] = '\0';
     return atof(buffer);
 }
+
 // Get the next Token
 Token lexer_get_token(Lexer* lexer)
 {
@@ -65,6 +66,7 @@ Token lexer_get_token(Lexer* lexer)
     }
 }
 
+// Tokenising the expression
 LinkList* lex_expression(const char* input)
 {
     Lexer lexer = {input, 0, input[0]};
