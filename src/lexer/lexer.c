@@ -43,25 +43,25 @@ Token lexer_get_token(Lexer* lexer)
 
     if(lexer->current_char == '\0')
     {
-        return (Token){TOKEN_EOF, 0};
+        return (Token){TOKEN_EOF, 0, {0, 0}};
     }
 
     if(lexer->current_char >= '0' && lexer->current_char <= '9')
     {
-        return (Token){TOKEN_NUMBER, lexer_parse_number(lexer)};
+        return (Token){TOKEN_NUMBER, lexer_parse_number(lexer), {0,0}};
     }
 
     char c = lexer->current_char;
     lexer_next(lexer);
     switch (c)
     {
-    case '+': return (Token){TOKEN_PLUS, 0};
-    case '-': return (Token){TOKEN_MINUS, 0};
-    case '*': return (Token){TOKEN_MULTIPLY, 0};
-    case '/': return (Token){TOKEN_DIVIDE, 0};
-    case '(': return (Token){TOKEN_LPAREN, 0};
-    case ')': return (Token){TOKEN_RPAREN, 0};
-    default: return (Token){TOKEN_INVALID, 0};
+    case '+': return (Token){TOKEN_PLUS, 0, {1, 1.1}};
+    case '-': return (Token){TOKEN_MINUS, 0, {1, 1.1}};
+    case '*': return (Token){TOKEN_MULTIPLY, 0, {2, 2.1}};
+    case '/': return (Token){TOKEN_DIVIDE, 0, {2, 2.1}};
+    case '(': return (Token){TOKEN_LPAREN, 0, {0, 0}};
+    case ')': return (Token){TOKEN_RPAREN, 0, {0, 0}};
+    default: return (Token){TOKEN_INVALID, 0, {0, 0}};
     }
 }
 

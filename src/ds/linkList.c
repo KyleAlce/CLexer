@@ -30,7 +30,7 @@ Token link_list_pop(LinkList* list)
 {
     if(list->next == NULL)
     {
-        return (Token){TOKEN_INVALID, 0};
+        return (Token){TOKEN_INVALID, 0, {0, 0}};
     }
 
     LinkList* cur = list;
@@ -50,7 +50,7 @@ Token link_list_get(LinkList *list, int ind)
 {
     if(list->next == NULL || ind < 0)
     {
-        return (Token){TOKEN_INVALID, 0.0};
+        return (Token){TOKEN_INVALID, 0.0, {0, 0}};
     }
 
     LinkList* cur = list->next;
@@ -62,7 +62,7 @@ Token link_list_get(LinkList *list, int ind)
 
     if(ind > 0)
     {
-        return (Token){TOKEN_INVALID, 0.0};    
+        return (Token){TOKEN_INVALID, 0.0, {0, 0}};    
     }
 
     return cur->value ;
